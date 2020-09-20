@@ -1,4 +1,5 @@
 #include<cmath>
+#include<iostream>
 
 #ifndef _PROTH_NUMBER
 #define _PROTH_NUMBER
@@ -26,5 +27,7 @@ class proth_number{
         void prepare();
         bool is_proth_number(){return is_proth;}
 };
+
+std::ostream& operator<<(std::ostream &strm, const proth_type &p);
 
 #endif

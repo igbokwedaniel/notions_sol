@@ -1,4 +1,6 @@
 #include<cmath>
+#include<iostream>
+#include<string>
 
 #include "proth_number.h"
 bool isPowerOfTwo(int n);
@@ -36,4 +38,19 @@ int getPowerOfTwo(int n){
         n = n >> 1;
     }
     return bitCount-1;
+}
+
+std::ostream& operator<<(std::ostream &strm, const proth_type &p) {
+
+    std::string result{""};
+    switch(p){
+        case proth_type::COMPOSITE:
+            result = "COMPOSITE";
+            break;
+
+        case proth_type::PRIME:
+            result = "PRIME";
+            break;
+    }
+    return strm << "The tested Number is " << result << std::endl;
 }
