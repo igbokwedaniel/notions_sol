@@ -13,9 +13,11 @@ class rand_generator
         std::uniform_int_distribution<std::mt19937_64::result_type> distribution;
         long long max_val{1};
         long long min_val{1};
+
+        rand_generator(){}
         virtual long long get_next_rand() = 0; 
         virtual void prepare() = 0; 
-        virtual ˜rand_generator() {} // destructor (§3.2.1.2)
+        virtual ~rand_generator() {} // destructor (§3.2.1.2)
         
 };
 
@@ -23,7 +25,7 @@ class rand_generator
 class proth_rand_generator : public rand_generator{
     public:
         long long max_val{1};
-        proth_rand_generator(long long max) : max_val{max}{}
+        proth_rand_generator(long long max) : rand_generator(), max_val{max}{ prepare();}
         void prepare();
         long long get_next_rand();
 
