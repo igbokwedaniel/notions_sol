@@ -21,7 +21,8 @@ proth_type proth_prime_checker<proth_rand_generator>::run()
     long long sample_size{powa(std::log2(proth_num.N),2)*proth_num.t};  
     long long start{0}, 
                 a{0}, 
-                b{0}, 
+                b{0},
+                b_2{0}, 
                 exponent{(proth_num.N-1)/2};
 
 
@@ -29,12 +30,20 @@ proth_type proth_prime_checker<proth_rand_generator>::run()
         a       = random_gen.get_next_rand();
         b       = modular_exp(a,exponent,proth_num.N) - proth_num.N;
     
-        std::cout<<  "a,b => " << a << " " << b  << std::endl;
+        //std::cout<<  "a,b => " << a << " " << b  << std::endl;
 
 
         if(b == -1)
             return proth_type::PRIME;
 
+        b_2  = modular_exp(b,2,proth_num.N);
+
+        //Lemma: Fermat's little theorem
+        if(b_2 != 1)
+            return proth_type::COMPOSITE;
+
+        if(b_2 == 1 && b+proth_num.N !=1)
+            return proth_type::COMPOSITE;
         
         ++start;
     }

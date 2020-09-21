@@ -45,12 +45,12 @@ std::ostream& operator<<(std::ostream &strm, const proth_type &p) {
     std::string result{""};
     switch(p){
         case proth_type::COMPOSITE:
-            result = "COMPOSITE";
+            result = "COMPOSITE ";
             break;
 
         case proth_type::PRIME:
-            result = "PRIME";
+            result = "PRIME ";
             break;
     }
-    return strm << "The tested Number is " << result << std::endl;
+    return strm << result;
 }
