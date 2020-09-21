@@ -37,10 +37,10 @@ void test(){
 			if(static_cast<int>(p_res) == res)
 				{++passed; mark = "PASSED";}
 
-			std::cout << total <<  " " << N << " is " << p_res << " ==> " << mark << std::endl ;
+			std::cout << total <<  ")\t" << N << "\t\t is " << p_res << "\t\t ==> " << mark << std::endl ;
 		}
 		testFile.close();
 
-		std::cout << "Total: " << total << " || passed: " << passed << " || failed: " << total-passed << std::endl;
+		std::cout << std::endl << "Total: " << total << " || passed: " << passed << " || failed: " << total-passed << std::endl;
 	}
 }
