@@ -30,4 +30,6 @@ class proth_number{
 
 std::ostream& operator<<(std::ostream &strm, const proth_type &p);
 
+std::ostream& operator<<(std::ostream &strm, const proth_number &p);
+
 #endif

@@ -1,11 +1,14 @@
 #include <iostream>
 #include <fstream>
+#include <vector>
+#include<algorithm>
 
 #include "random_generator.h"
 #include "proth_number.h"
 #include "proth_primality_checker.h"
 
 void test();
+void print_proth_primes(long long start, long long end);
 
 int main(int argc, char *argv[])
 {
@@ -43,4 +46,27 @@ void test(){
 
 		std::cout << std::endl << "Total: " << total << " || passed: " << passed << " || failed: " << total-passed << std::endl;
 	}
+}
+
+
+//Test to Generate proth primes between range start - end
+void print_proth_primes(long long start, long long end){
+
+	proth_rand_generator prand_generator{1};
+
+	long long num{start};
+	std::vector<long long> range(end - start);
+	for(auto i: range){
+		auto prime_checker			= proth_prime_checker<proth_rand_generator>{prand_generator, num};
+		auto p_res 					= prime_checker.run();
+		if(p_res == proth_type::PRIME)
+			{
+				std::cout << p_res << num <<  " :-:  " << prime_checker.proth_num << std::endl;
+			}
+		++num;
+	};
+	
+
+
+
 }

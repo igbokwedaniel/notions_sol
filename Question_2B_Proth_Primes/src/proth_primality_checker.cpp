@@ -25,7 +25,6 @@ proth_type proth_prime_checker<proth_rand_generator>::run()
                 b_2{0}, 
                 exponent{(proth_num.N-1)/2};
 
-
     while (start <= sample_size){
         a       = random_gen.get_next_rand();
         b       = modular_exp(a,exponent,proth_num.N) - proth_num.N;
