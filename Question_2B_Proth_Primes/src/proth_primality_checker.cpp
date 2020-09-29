@@ -29,19 +29,12 @@ proth_type proth_prime_checker<proth_rand_generator>::run()
         a       = random_gen.get_next_rand();
         b       = modular_exp(a,exponent,proth_num.N) - proth_num.N;
     
-        std::cout<<  "a,b => " << a << " " << b  << std::endl;
-
 
         if(b == -1)
             return proth_type::PRIME;
 
         b_2  = modular_exp(b,2,proth_num.N);
 
-        //std::cout<<  "a,b_2 => " << a << " " << b_2  << std::endl;
-
-        //Lemma: Fermat's little theorem
-        //if(b_2 != 1)
-            //return proth_type::COMPOSITE;
 
         if(b_2 == 1 && b+proth_num.N !=1)
             return proth_type::COMPOSITE;
